@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Lesotho | The Kingdom in the Sky</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --lesotho-blue: #00209F;
+            --lesotho-blue-dark: #001772;
+            --lesotho-green: #009A44;
+            --lesotho-header: #1d4e89;
+            --lesotho-dark-slate: #1e293b;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        [data-bs-theme="dark"] body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+        }
+
+        .top-bar {
+            background-color: var(--lesotho-dark-slate);
+            color: #f8f9fa;
+            font-size: 0.875rem;
+        }
+
+        .custom-navbar {
+            background-color: var(--lesotho-header) !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 0.85rem !important;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.18) !important;
+            color: #ffffff !important;
+        }
+
+        .carousel-item {
+            height: 460px;
+        }
+
+        .carousel-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+        }
+
+        .carousel-caption {
+            background: rgba(15, 23, 42, 0.65);
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            bottom: 2rem;
+        }
+
+        .card-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .main-footer {
+            background-color: var(--lesotho-dark-slate);
+            color: #cbd5e1;
+        }
+
+        .main-footer a {
+            color: #93c5fd;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .main-footer a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                height: 300px;
+            }
+            .carousel-caption h2 {
+                font-size: 1.25rem;
+            }
+            .carousel-caption p {
+                font-size: 0.85rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar py-2 border-bottom border-secondary-subtle">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div class="d-flex align-items-center gap-3">
+                <span id="clock"><i class="bi bi-clock me-1"></i> Maseru time: loading...</span>
+                <span class="d-none d-sm-inline"><i class="bi bi-telephone me-1"></i> Contact: +266 5005 0055</span>
+            </div>
+            <div>
+                <button type="button" id="modeButton" class="btn btn-sm btn-outline-light" onclick="changeMode()">
+                    <i class="bi bi-moon-stars me-1"></i> Dark Mode
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar shadow-sm" aria-label="Main navigation">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-white d-flex align-items-center gap-2" href="Home.html">
+                    <i class="bi bi-compass text-warning"></i> Visit Lesotho
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#lesothoNav" aria-controls="lesothoNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="lesothoNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" href="Home.html" data-page="home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" href="About(2).html" data-page="about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" href="Destinations(1).html" data-page="destinations">Destinations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" href="Gallery(1).html" data-page="gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" href="Contact(2).html" data-page="contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="heroCarousel" class="carousel slide carousel-fade shadow-sm" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="4500">
+                <img src="Tsunyane.jpg" class="d-block w-100" alt="Maletsunyane Falls" onerror="this.src='Maletsunyane.jpg'">
+                <div class="carousel-caption">
+                    <h2 class="fw-bold">Maletsunyane Falls</h2>
+                    <p class="mb-2">Experience the breathtaking 192-meter single-drop waterfall near Semonkong.</p>
+                    <a href="Destinations(1).html" class="btn btn-sm btn-primary">Explore Destinations</a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4500">
+                <img src="sani pass.jpg" class="d-block w-100" alt="Sani Pass Mountain Road">
+                <div class="carousel-caption">
+                    <h2 class="fw-bold">Sani Pass Mountain Road</h2>
+                    <p class="mb-2">Ascend into the clouds on one of Africa's most iconic 4x4 mountain passes.</p>
+                    <a href="Destinations(1).html" class="btn btn-sm btn-primary">View Pass Details</a>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4500">
+                <img src="kobo.jpg" class="d-block w-100" alt="Basotho Culture & Blankets" onerror="this.src='t.bosiu.jpg'">
+                <div class="carousel-caption">
+                    <h2 class="fw-bold">Basotho Heritage & Culture</h2>
+                    <p class="mb-2">Discover timeless Basotho blankets, horseback trekking, and highland warmth.</p>
+                    <a href="About(2).html" class="btn btn-sm btn-outline-light">Read About Lesotho</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <main class="container my-5">
+
+        <section class="mb-5 text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 rounded-pill mb-2">The Mountain Kingdom</span>
+                    <h1 class="display-6 fw-bold mb-3">Welcome to Lesotho</h1>
+                    <p class="lead text-muted">
+                        Lesotho is a high-altitude mountain kingdom completely surrounded by South Africa. Known as the "Roof of Africa," it offers pristine mountain air, majestic rivers, unique Basotho culture, and unforgettable landscapes.
+                    </p>
+                    <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+                        <a href="Destinations(1).html" class="btn btn-primary px-4"><i class="bi bi-geo-alt me-1"></i> View All Places</a>
+                        <a href="Contact(2).html" class="btn btn-outline-secondary px-4"><i class="bi bi-calendar-check me-1"></i> Book a Tour</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="h4 fw-bold mb-4 border-start border-4 border-primary ps-3">Quick Facts</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 bg-body-tertiary">
+                        <div class="card-body text-center p-3">
+                            <div class="text-primary fs-2 mb-2"><i class="bi bi-building"></i></div>
+                            <h6 class="card-title fw-bold">Capital City</h6>
+                            <p class="card-text text-muted small mb-0">Maseru (Western Border)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 bg-body-tertiary">
+                        <div class="card-body text-center p-3">
+                            <div class="text-success fs-2 mb-2"><i class="bi bi-chat-quote"></i></div>
+                            <h6 class="card-title fw-bold">Official Languages</h6>
+                            <p class="card-text text-muted small mb-0">Sesotho & English</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 bg-body-tertiary">
+                        <div class="card-body text-center p-3">
+                            <div class="text-warning fs-2 mb-2"><i class="bi bi-cash-stack"></i></div>
+                            <h6 class="card-title fw-bold">Currencies</h6>
+                            <p class="card-text text-muted small mb-0">Lesotho Loti (LSL) & ZAR</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 bg-body-tertiary">
+                        <div class="card-body text-center p-3">
+                            <div class="text-danger fs-2 mb-2"><i class="bi bi-triangle"></i></div>
+                            <h6 class="card-title fw-bold">Highest Peak</h6>
+                            <p class="card-text text-muted small mb-0">Thabana Ntlenyana (3,482 m)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="h4 fw-bold border-start border-4 border-primary ps-3 mb-0">Popular Tourist Places</h2>
+                <a href="Destinations(1).html" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!-- Card 1 -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper position-relative">
+                            <img src="Maletsunyane Falls.webp" alt="Maletsunyane Falls" onerror="this.src='Maletsunyane.jpg'">
+                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">Waterfall</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Maletsunyane Falls</h5>
+                            <p class="card-text text-muted small mb-3">
+                                This waterfall is found near Semonkong. It is one of the highest waterfalls in Southern Africa, popular for abseiling and pony trekking.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="Destinations(1).html" class="btn btn-sm btn-outline-primary w-100">
+                                    <i class="bi bi-info-circle me-1"></i> Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper position-relative">
+                            <img src="katse.jpg" alt="Katse Dam">
+                            <span class="badge bg-success position-absolute top-0 end-0 m-2">Highland Dam</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Katse Dam</h5>
+                            <p class="card-text text-muted small mb-3">
+                                Katse Dam is surrounded by mountains and features a massive curved concrete wall, boat excursions, and scenic botanical gardens.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="Destinations(1).html" class="btn btn-sm btn-outline-primary w-100">
+                                    <i class="bi bi-info-circle me-1"></i> Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper position-relative">
+                            <img src="t.bosiu.jpg" alt="Thaba Bosiu" onerror="this.src='thaba bosiu.jpg'">
+                            <span class="badge bg-dark position-absolute top-0 end-0 m-2">Cultural Heritage</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Thaba Bosiu</h5>
+                            <p class="card-text text-muted small mb-3">
+                                An iconic plateau fortress of King Moshoeshoe I, Thaba Bosiu is the historic cradle of the Basotho nation and a national monument.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="Destinations(1).html" class="btn btn-sm btn-outline-primary w-100">
+                                    <i class="bi bi-info-circle me-1"></i> Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div class="card shadow-sm border-0 overflow-hidden">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-6">
+                        <img src="afriski.jpg" alt="AfriSki Resort" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 260px;">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body p-4 p-lg-5">
+                            <span class="badge bg-info text-dark mb-2">Winter & Adventure</span>
+                            <h3 class="card-title fw-bold">AfriSki Mountain Resort</h3>
+                            <p class="card-text text-muted">
+                                Located at 3,222 meters in the Maloti Mountains of Butha-Buthe, AfriSki offers thrilling winter snow sports, snowboarding, and year-round high-altitude mountain biking and trail running.
+                            </p>
+                            <a href="Contact(2).html" class="btn btn-primary">
+                                <i class="bi bi-calendar-event me-1"></i> Plan a Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-white fw-bold mb-3"><i class="bi bi-compass text-warning me-2"></i>Visit Lesotho</h5>
+                    <p class="small text-secondary">
+                        The official visitor guide to the Kingdom of Lesotho. Discover untouched mountain heights, rich Basotho traditions, and memorable highland adventures.
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="Home.html"><i class="bi bi-chevron-right small me-1"></i>Home</a></li>
+                        <li class="mb-2"><a href="About(2).html"><i class="bi bi-chevron-right small me-1"></i>About Lesotho</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html"><i class="bi bi-chevron-right small me-1"></i>Destinations</a></li>
+                        <li class="mb-2"><a href="Gallery(1).html"><i class="bi bi-chevron-right small me-1"></i>Photo Gallery</a></li>
+                        <li class="mb-2"><a href="Contact(2).html"><i class="bi bi-chevron-right small me-1"></i>Contact & Booking</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white fw-bold mb-3">Popular Places</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="Destinations(1).html">Maletsunyane Falls</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html">Katse Dam</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html">Sani Pass</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html">Thaba Bosiu</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html">AfriSki Mountain Resort</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white fw-bold mb-3">Contact Maseru Office</h5>
+                    <p class="small mb-1"><i class="bi bi-geo-alt me-2 text-danger"></i>Kingsway Road, Maseru 100, Lesotho</p>
+                    <p class="small mb-1"><i class="bi bi-envelope me-2 text-info"></i>info@sentlemahasane2003@gmail.com</p>
+                    <p class="small mb-1"><i class="bi bi-telephone me-2 text-success"></i>+266 5005 0055</p>
+                    <p class="small text-secondary"><i class="bi bi-clock me-2"></i>Mon–Fri: 08:00–17:00</p>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-3 mt-4 text-center">
+                <p class="small text-secondary mb-0">&copy; Copyright @ 2026 - Designed by Sentle</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function showTime() {
+            var now = new Date();
+            var clock = document.getElementById("clock");
+            if (clock) {
+                clock.innerHTML = '<i class="bi bi-clock me-1"></i> Maseru time: ' +
+                    now.toLocaleTimeString("en-GB", { timeZone: "Africa/Maseru" });
+            }
+        }
+        showTime();
+        setInterval(showTime, 1000);
+
+        function changeMode() {
+            var html = document.documentElement;
+            var currentTheme = html.getAttribute("data-bs-theme");
+            var newTheme = currentTheme === "dark" ? "light" : "dark";
+            html.setAttribute("data-bs-theme", newTheme);
+            document.body.classList.toggle("dark", newTheme === "dark");
+
+            var button = document.getElementById("modeButton");
+            if (button) {
+                button.innerHTML = newTheme === "dark" 
+                    ? '<i class="bi bi-sun me-1"></i> Light Mode' 
+                    : '<i class="bi bi-moon-stars me-1"></i> Dark Mode';
+            }
+            try {
+                localStorage.setItem("lesothoTheme", newTheme);
+            } catch (e) {}
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            try {
+                var savedTheme = localStorage.getItem("lesothoTheme");
+                if (savedTheme === "dark") {
+                    document.documentElement.setAttribute("data-bs-theme", "dark");
+                    document.body.classList.add("dark");
+                    var btn = document.getElementById("modeButton");
+                    if (btn) btn.innerHTML = '<i class="bi bi-sun me-1"></i> Light Mode';
+                }
+            } catch (e) {}
+
+            // Set active navigation link
+            var file = location.pathname.split("/").pop().toLowerCase();
+            var page = "home";
+            if (file.indexOf("about") >= 0) page = "about";
+            else if (file.indexOf("destination") >= 0) page = "destinations";
+            else if (file.indexOf("gallery") >= 0) page = "gallery";
+            else if (file.indexOf("contact") >= 0) page = "contact";
+
+            document.querySelectorAll("#lesothoNav .nav-link").forEach(function (link) {
+                if (link.getAttribute("data-page") === page) {
+                    link.classList.add("active");
+                    link.classList.remove("text-white-50");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

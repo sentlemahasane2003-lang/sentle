@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations in Lesotho | The Mountain Kingdom</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --lesotho-blue: #00209F;
+            --lesotho-blue-dark: #001772;
+            --lesotho-green: #009A44;
+            --lesotho-header: #1d4e89;
+            --lesotho-dark-slate: #1e293b;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        [data-bs-theme="dark"] body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+        }
+
+        .top-bar {
+            background-color: var(--lesotho-dark-slate);
+            color: #f8f9fa;
+            font-size: 0.875rem;
+        }
+
+        .custom-navbar {
+            background-color: var(--lesotho-header) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 0.85rem !important;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.18) !important;
+            color: #ffffff !important;
+        }
+
+        .page-banner {
+            background: linear-gradient(rgba(29, 78, 137, 0.88), rgba(30, 41, 59, 0.92)), url('Maletsunyane.jpg') center/cover no-repeat;
+            color: #ffffff;
+            padding: 2.5rem 0;
+        }
+
+        .card-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .main-footer {
+            background-color: var(--lesotho-dark-slate);
+            color: #cbd5e1;
+        }
+
+        .main-footer a {
+            color: #93c5fd;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .main-footer a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Bar Component -->
+    <div class="top-bar py-2 border-bottom border-secondary-subtle">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div class="d-flex align-items-center gap-3">
+                <span id="clock"><i class="bi bi-clock me-1"></i> Maseru time: loading...</span>
+                <span class="d-none d-sm-inline"><i class="bi bi-telephone me-1"></i> Contact: +266 5005 0055</span>
+            </div>
+            <div>
+                <button type="button" id="modeButton" class="btn btn-sm btn-outline-light" onclick="changeMode()">
+                    <i class="bi bi-moon-stars me-1"></i> Dark Mode
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Responsive Bootstrap Navbar Component -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar shadow-sm" aria-label="Main navigation">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-white d-flex align-items-center gap-2" href="Home.html">
+                    <i class="bi bi-compass text-warning"></i> Visit Lesotho
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#lesothoNav" aria-controls="lesothoNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="lesothoNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" href="Home.html" data-page="home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" href="About(2).html" data-page="about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" href="Destinations(1).html" data-page="destinations">Destinations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" href="Gallery(1).html" data-page="gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" href="Contact(2).html" data-page="contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 3. Bootstrap Page Banner & Breadcrumbs Component -->
+    <div class="page-banner">
+        <div class="container">
+            <h1 class="fw-bold mb-2">Places to Visit in Lesotho</h1>
+            <p class="lead mb-3">Explore iconic waterfalls, towering mountain passes, historical monuments, and national parks.</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="Home.html" class="text-white text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item active text-white-50" aria-current="page">Destinations</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="container my-5">
+
+        <!-- 4. Bootstrap Input Group & Button Group Components (Search & Filter) -->
+        <section class="card shadow-sm border-0 p-4 mb-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                    <label for="search" class="form-label fw-bold mb-1"><i class="bi bi-search me-1 text-primary"></i> Search Destinations</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-funnel"></i></span>
+                        <input type="text" class="form-control" id="search" placeholder="Type a place name, region, or keyword..." onkeyup="searchPlaces()">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold mb-1"><i class="bi bi-tags me-1 text-primary"></i> Filter by Category</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button class="btn btn-sm btn-outline-primary active filter-btn" onclick="filterPlaces('all', this)">All</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" onclick="filterPlaces('waterfalls', this)">Waterfalls & Dams</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" onclick="filterPlaces('mountains', this)">Mountains</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" onclick="filterPlaces('culture', this)">Culture</button>
+                        <button class="btn btn-sm btn-outline-primary filter-btn" onclick="filterPlaces('adventure', this)">Adventure</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- No Results Alert Component -->
+        <div id="noResultsAlert" class="alert alert-info d-none text-center shadow-sm" role="alert">
+            <i class="bi bi-exclamation-circle me-2"></i> No destinations found matching your criteria. Try another search or filter.
+        </div>
+
+        <!-- 5. Bootstrap Responsive Card Grid Component (Destinations) -->
+        <section class="mb-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="places">
+
+                <!-- Place 1: Maletsunyane Falls -->
+                <div class="col place" data-category="waterfalls">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper">
+                            <img src="Maletsunyane.jpg" alt="Maletsunyane Falls" onerror="this.src='Maletsunyane Falls.webp'">
+                            <span class="badge bg-primary position-absolute top-0 end-0 m-2">Waterfall</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title fw-bold">Maletsunyane Falls</h3>
+                            <p class="small text-muted mb-2">
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> Semonkong, Maseru District
+                            </p>
+                            <p class="card-text text-muted small flex-grow-1">
+                                A magnificent 192m waterfall where visitors can enjoy breathtaking cliff lookouts, pony trekking, and the world's longest commercial abseil.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-auto">
+                                <span class="fw-bold text-success">From M 750</span>
+                                <a href="Contact(2).html?tour=maletsunyane#bookingSection" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-calendar-plus me-1"></i> Book a Tour
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place 2: Sani Pass -->
+                <div class="col place" data-category="mountains">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper">
+                            <img src="sani pass.jpg" alt="Sani Pass">
+                            <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2">Mountain Pass</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title fw-bold">Sani Pass</h3>
+                            <p class="small text-muted mb-2">
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> Mokhotlong District Border
+                            </p>
+                            <p class="card-text text-muted small flex-grow-1">
+                                An iconic zigzagging mountain pass reaching 2,876m elevation, renowned for thrilling 4x4 climbs and the highest pub in Africa.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-auto">
+                                <span class="fw-bold text-success">From M 950</span>
+                                <a href="Contact(2).html?tour=sani_pass#bookingSection" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-calendar-plus me-1"></i> Book a Tour
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place 3: Katse Dam -->
+                <div class="col place" data-category="waterfalls">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper">
+                            <img src="katse.jpg" alt="Katse Dam">
+                            <span class="badge bg-info text-dark position-absolute top-0 end-0 m-2">Highland Dam</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title fw-bold">Katse Dam</h3>
+                            <p class="small text-muted mb-2">
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> Thaba-Tseka District
+                            </p>
+                            <p class="card-text text-muted small flex-grow-1">
+                                The centerpiece of the Lesotho Highlands Water Project, featuring an imposing 185m curved dam wall, alpine botanical garden, and boat cruises.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-auto">
+                                <span class="fw-bold text-success">From M 650</span>
+                                <a href="Contact(2).html?tour=katse_dam#bookingSection" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-calendar-plus me-1"></i> Book a Tour
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place 4: Thaba Bosiu -->
+                <div class="col place" data-category="culture">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper">
+                            <img src="thaba bosiu.jpg" alt="Thaba Bosiu" onerror="this.src='t.bosiu.jpg'">
+                            <span class="badge bg-secondary position-absolute top-0 end-0 m-2">Cultural Heritage</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title fw-bold">Thaba Bosiu</h3>
+                            <p class="small text-muted mb-2">
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> Maseru District (24 km East)
+                            </p>
+                            <p class="card-text text-muted small flex-grow-1">
+                                A sacred mountain fortress where King Moshoeshoe I united the Basotho. Features a cultural village, historical museum, and royal burial ground.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-auto">
+                                <span class="fw-bold text-success">From M 500</span>
+                                <a href="Contact(2).html?tour=thaba_bosiu#bookingSection" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-calendar-plus me-1"></i> Book a Tour
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place 5: AfriSki Mountain Resort -->
+                <div class="col place" data-category="adventure">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper">
+                            <img src="afriski.jpg" alt="AfriSki Mountain Resort">
+                            <span class="badge bg-danger position-absolute top-0 end-0 m-2">Winter Sports</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title fw-bold">AfriSki Mountain Resort</h3>
+                            <p class="small text-muted mb-2">
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> Butha-Buthe District
+                            </p>
+                            <p class="card-text text-muted small flex-grow-1">
+                                Southern Africa's premier ski and snowboarding destination with seasonal snow making, ski lifts, high-altitude trail running, and mountain biking.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-auto">
+                                <span class="fw-bold text-success">From M 1,200</span>
+                                <a href="Contact(2).html?tour=afriski#bookingSection" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-calendar-plus me-1"></i> Book a Tour
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place 6: Tsehlanyane National Park -->
+                <div class="col place" data-category="adventure">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-img-wrapper">
+                            <img src="tsehlanyane.jpg" alt="Tsehlanyane National Park">
+                            <span class="badge bg-success position-absolute top-0 end-0 m-2">National Park</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h5 card-title fw-bold">Tsehlanyane National Park</h3>
+                            <p class="small text-muted mb-2">
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> Leribe District
+                            </p>
+                            <p class="card-text text-muted small flex-grow-1">
+                                An untamed mountain wilderness protecting rare indigenous sub-alpine indigenous woodlands, crystal clear mountain streams, and serene nature trails.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-auto">
+                                <span class="fw-bold text-success">From M 800</span>
+                                <a href="Contact(2).html?tour=tsehlanyane#bookingSection" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-calendar-plus me-1"></i> Book a Tour
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 6. Bootstrap Responsive Table Component (Tour Prices) -->
+        <section class="card shadow-sm border-0 p-4 mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 fw-bold mb-0"><i class="bi bi-table me-2 text-primary"></i> Tour Packages & Pricing</h2>
+                <span class="badge bg-light text-dark border">Updated 2026</span>
+            </div>
+            <p class="text-muted small">Standard guided tour starting prices per person. Group and seasonal discounts apply upon checkout.</p>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped align-middle mb-0">
+                    <thead class="table-primary">
+                        <tr>
+                            <th scope="col">Tour Name</th>
+                            <th scope="col">District / Location</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Difficulty</th>
+                            <th scope="col">Price (ZAR/LSL)</th>
+                            <th scope="col" class="text-center">Booking</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-semibold">Semonkong Waterfall Explorer</td>
+                            <td>Maseru</td>
+                            <td>2 Days / 1 Night</td>
+                            <td><span class="badge bg-warning-subtle text-warning-emphasis">Moderate</span></td>
+                            <td class="fw-bold text-success">M 750</td>
+                            <td class="text-center">
+                                <a href="Contact(2).html?tour=maletsunyane#bookingSection" class="btn btn-sm btn-outline-primary">Book</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold">Roof of Africa Sani 4x4 Tour</td>
+                            <td>Mokhotlong</td>
+                            <td>1 Full Day</td>
+                            <td><span class="badge bg-danger-subtle text-danger-emphasis">Hard / 4x4</span></td>
+                            <td class="fw-bold text-success">M 950</td>
+                            <td class="text-center">
+                                <a href="Contact(2).html?tour=sani_pass#bookingSection" class="btn btn-sm btn-outline-primary">Book</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold">Katse Dam Highlands Discovery</td>
+                            <td>Thaba-Tseka</td>
+                            <td>2 Days / 1 Night</td>
+                            <td><span class="badge bg-success-subtle text-success-emphasis">Easy</span></td>
+                            <td class="fw-bold text-success">M 650</td>
+                            <td class="text-center">
+                                <a href="Contact(2).html?tour=katse_dam#bookingSection" class="btn btn-sm btn-outline-primary">Book</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold">Thaba Bosiu Cultural Heritage Tour</td>
+                            <td>Maseru</td>
+                            <td>Half Day</td>
+                            <td><span class="badge bg-success-subtle text-success-emphasis">Easy</span></td>
+                            <td class="fw-bold text-success">M 500</td>
+                            <td class="text-center">
+                                <a href="Contact(2).html?tour=thaba_bosiu#bookingSection" class="btn btn-sm btn-outline-primary">Book</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold">AfriSki Winter Mountain Ski Package</td>
+                            <td>Butha-Buthe</td>
+                            <td>3 Days / 2 Nights</td>
+                            <td><span class="badge bg-warning-subtle text-warning-emphasis">Moderate</span></td>
+                            <td class="fw-bold text-success">M 1,200</td>
+                            <td class="text-center">
+                                <a href="Contact(2).html?tour=afriski#bookingSection" class="btn btn-sm btn-outline-primary">Book</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-semibold">Tsehlanyane Wilderness Hike</td>
+                            <td>Leribe</td>
+                            <td>3 Days / 2 Nights</td>
+                            <td><span class="badge bg-warning-subtle text-warning-emphasis">Moderate</span></td>
+                            <td class="fw-bold text-success">M 800</td>
+                            <td class="text-center">
+                                <a href="Contact(2).html?tour=tsehlanyane#bookingSection" class="btn btn-sm btn-outline-primary">Book</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 7. Responsive Bootstrap Multi-Column Footer Component -->
+    <footer class="main-footer pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-white fw-bold mb-3"><i class="bi bi-compass text-warning me-2"></i>Visit Lesotho</h5>
+                    <p class="small text-secondary">
+                        The official visitor guide to the Kingdom of Lesotho. Discover untouched mountain heights, rich Basotho traditions, and memorable highland adventures.
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="Home.html"><i class="bi bi-chevron-right small me-1"></i>Home</a></li>
+                        <li class="mb-2"><a href="About(2).html"><i class="bi bi-chevron-right small me-1"></i>About Lesotho</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html"><i class="bi bi-chevron-right small me-1"></i>Destinations</a></li>
+                        <li class="mb-2"><a href="Gallery(1).html"><i class="bi bi-chevron-right small me-1"></i>Photo Gallery</a></li>
+                        <li class="mb-2"><a href="Contact(2).html"><i class="bi bi-chevron-right small me-1"></i>Contact & Booking</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white fw-bold mb-3">Popular Places</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="Destinations(1).html">Maletsunyane Falls</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html">Katse Dam</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html">Sani Pass</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html">Thaba Bosiu</a></li>
+                        <li class="mb-2"><a href="Destinations(1).html">AfriSki Mountain Resort</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white fw-bold mb-3">Contact Maseru Office</h5>
+                    <p class="small mb-1"><i class="bi bi-geo-alt me-2 text-danger"></i>Kingsway Road, Maseru 100, Lesotho</p>
+                    <p class="small mb-1"><i class="bi bi-envelope me-2 text-info"></i>info@sentlemahasane2003@gmail.com</p>
+                    <p class="small mb-1"><i class="bi bi-telephone me-2 text-success"></i>+266 5005 0055</p>
+                    <p class="small text-secondary"><i class="bi bi-clock me-2"></i>Mon–Fri: 08:00–17:00</p>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-3 mt-4 text-center">
+                <p class="small text-secondary mb-0">&copy; Copyright @ 2026 - Designed by Sentle</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Maseru Live Clock
+        function showTime() {
+            var now = new Date();
+            var clock = document.getElementById("clock");
+            if (clock) {
+                clock.innerHTML = '<i class="bi bi-clock me-1"></i> Maseru time: ' +
+                    now.toLocaleTimeString("en-GB", { timeZone: "Africa/Maseru" });
+            }
+        }
+        showTime();
+        setInterval(showTime, 1000);
+
+        // Dark / Light Mode with Bootstrap 5.3
+        function changeMode() {
+            var html = document.documentElement;
+            var currentTheme = html.getAttribute("data-bs-theme");
+            var newTheme = currentTheme === "dark" ? "light" : "dark";
+            html.setAttribute("data-bs-theme", newTheme);
+            document.body.classList.toggle("dark", newTheme === "dark");
+
+            var button = document.getElementById("modeButton");
+            if (button) {
+                button.innerHTML = newTheme === "dark" 
+                    ? '<i class="bi bi-sun me-1"></i> Light Mode' 
+                    : '<i class="bi bi-moon-stars me-1"></i> Dark Mode';
+            }
+            try {
+                localStorage.setItem("lesothoTheme", newTheme);
+            } catch (e) {}
+        }
+
+        // Filtering & Searching Destinations
+        var currentCategory = "all";
+
+        function filterPlaces(category, btnElement) {
+            currentCategory = category;
+
+            // Update active state on filter buttons
+            if (btnElement) {
+                document.querySelectorAll(".filter-btn").forEach(function (btn) {
+                    btn.classList.remove("active");
+                });
+                btnElement.classList.add("active");
+            }
+
+            applyFilters();
+        }
+
+        function searchPlaces() {
+            applyFilters();
+        }
+
+        function applyFilters() {
+            var searchText = (document.getElementById("search").value || "").toLowerCase().trim();
+            var places = document.querySelectorAll(".place");
+            var visibleCount = 0;
+
+            places.forEach(function (card) {
+                var cat = card.getAttribute("data-category");
+                var cardText = card.innerText.toLowerCase();
+
+                var matchesCat = (currentCategory === "all" || cat === currentCategory || (currentCategory === "waterfalls" && cat === "dam"));
+                var matchesSearch = searchText === "" || cardText.indexOf(searchText) !== -1;
+
+                if (matchesCat && matchesSearch) {
+                    card.classList.remove("d-none");
+                    visibleCount++;
+                } else {
+                    card.classList.add("d-none");
+                }
+            });
+
+            var alertBox = document.getElementById("noResultsAlert");
+            if (alertBox) {
+                if (visibleCount === 0) {
+                    alertBox.classList.remove("d-none");
+                } else {
+                    alertBox.classList.add("d-none");
+                }
+            }
+        }
+
+        // Initialize theme and active page link
+        document.addEventListener("DOMContentLoaded", function () {
+            try {
+                var savedTheme = localStorage.getItem("lesothoTheme");
+                if (savedTheme === "dark") {
+                    document.documentElement.setAttribute("data-bs-theme", "dark");
+                    document.body.classList.add("dark");
+                    var btn = document.getElementById("modeButton");
+                    if (btn) btn.innerHTML = '<i class="bi bi-sun me-1"></i> Light Mode';
+                }
+            } catch (e) {}
+
+            var file = location.pathname.split("/").pop().toLowerCase();
+            var page = "home";
+            if (file.indexOf("about") >= 0) page = "about";
+            else if (file.indexOf("destination") >= 0) page = "destinations";
+            else if (file.indexOf("gallery") >= 0) page = "gallery";
+            else if (file.indexOf("contact") >= 0) page = "contact";
+
+            document.querySelectorAll("#lesothoNav .nav-link").forEach(function (link) {
+                if (link.getAttribute("data-page") === page) {
+                    link.classList.add("active");
+                    link.classList.remove("text-white-50");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

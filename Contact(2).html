@@ -1,0 +1,383 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Tour Booking | Visit Lesotho</title>
+<style type="text/css">
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: whitesmoke;
+    color: black;
+    line-height: 1.6;
+}
+body.dark { background: black; color: white; }
+* { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+a { color: lightblue; }
+body.dark a { color: lightblue; }
+header { background: steelblue; color: white; text-align: center; padding: 18px; }
+.top-bar { background: darkslategrey; color: white; padding: 8px 4%; }
+.site-nav { background: darkslategrey; color: white; padding: 12px 4%; }
+.nav-inner { max-width: 1100px; margin: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.site-brand { color: white; font-size: 20px; font-weight: bold; text-decoration: none; }
+.site-nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.site-nav-links a, nav a { color: white; text-decoration: none; padding: 8px; }
+.site-nav-links a:hover, .site-nav-links a.active, nav a:hover { background: lightblue; border-radius: 4px; }
+.menu-toggle { display: none; }
+button { background: lightblue; color: white; border: 0; padding: 9px 14px; margin: 4px; cursor: pointer; border-radius: 4px; }
+button:hover { background: steelblue; }
+main, .site-container, .container { width: 92%; max-width: 1100px; margin: 20px auto; }
+.hero { background: lightgrey; text-align: center; padding: 25px 12px; }
+.hero img { width: 100%; max-width: 900px; max-height: 360px; object-fit: cover; }
+.places, .gallery, .cards, .row { display: flex; flex-wrap: wrap; gap: 16px; }
+.place, .photo, .card, .accordion-item, .form-box { background: white; color: black; border: 1px solid lightgrey; padding: 14px; border-radius: 5px; flex: 1 1 240px; }
+body.dark .place, body.dark .photo, body.dark .card, body.dark .accordion-item, body.dark .form-box { background: darkslategrey; color: white; border-color: grey; }
+input, select, textarea { width: 100%; padding: 9px; margin: 5px 0 12px; border: 1px solid grey; border-radius: 4px; font: inherit; }
+label { display: block; }
+footer { background: darkslategrey; color: white; text-align: center; padding: 18px; margin-top: 30px; }
+.breadcrumb { list-style: none; padding: 0; }
+.breadcrumb li { display: inline; margin-right: 8px; }
+.accordion-button { width: 100%; text-align: left; }
+.hidden, [hidden] { display: none !important; }
+@media (max-width: 700px) {
+    .menu-toggle { display: inline-block; }
+    .nav-inner { align-items: flex-start; }
+    .site-nav-links { display: none; width: 100%; flex-direction: column; }
+    .site-nav-links.open { display: flex; }
+    .site-nav-links a { display: block; }
+    main, .site-container, .container { width: 94%; }
+}
+
+</style>
+
+</head>
+<body>
+    <div class="top-bar">
+  <div class="site-container">
+    <span id="clock">Maseru time: loading...</span>
+    <span>Contact: +266 5005 0055</span>
+    <button type="button" id="modeButton" onclick="changeMode()">Dark Mode</button>
+  </div>
+
+</div>
+<header class="site-header">
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-container nav-inner">
+      <a class="site-brand" href="Home.html">Visit Lesotho</a>
+      <button class="menu-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="lesothoNav">☰ Menu</button>
+      <div class="site-nav-links" id="lesothoNav">
+        <a href="Home.html" data-page="home">Home</a>
+        <a href="About(2).html" data-page="about">About</a>
+        <a href="Destinations(1).html" data-page="destinations">Destinations</a>
+        <a href="Gallery(1).html" data-page="gallery">Gallery</a>
+        <a href="Contact(2).html" data-page="contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Contact Us & Book Your Tour</h1>
+            <p>Contact the Maseru Tourism Office or book a tour in Lesotho.</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="Home.html">Home</a></li>
+                    <li class="breadcrumb-item active">Contact & Booking</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <main class="container my-5">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <section class="form-container mb-5" id="bookingSection">
+                    <h2 class="section-title">Tour Booking & Cost Calculator</h2>
+                    <p class="text-muted">Choose a tour, group size, number of days, and accommodation to see the estimated cost in Maloti.</p>
+
+                    <div id="bookingSuccessAlert" class="alert alert-success d-none"></div>
+                    <div id="bookingErrorAlert" class="alert alert-danger d-none"></div>
+                    <div id="recentBookingBox" class="d-none mb-3"></div>
+
+                    <form id="bookingForm" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="bookName" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="bookName" placeholder="Your name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bookEmail" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="bookEmail" placeholder="you@example.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bookPhone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="bookPhone" placeholder="+266 5800 1234" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bookDate" class="form-label">Travel Date *</label>
+                                <input type="date" class="form-control" id="bookDate" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="calcTourPackage" class="form-label">Tour Package *</label>
+                                <select class="form-select" id="calcTourPackage" required>
+                                    <option value="maletsunyane" selected>Semonkong Waterfall Explorer (M 750 / day / person)</option>
+                                    <option value="sani_pass">Roof of Africa Sani 4x4 Tour (M 950 / day / person)</option>
+                                    <option value="katse_dam">Katse Dam Highlands Discovery (M 650 / day / person)</option>
+                                    <option value="thaba_bosiu">Thaba Bosiu Cultural Heritage Tour (M 500 / day / person)</option>
+                                    <option value="afriski">AfriSki Winter Mountain Ski Package (M 1,200 / day / person)</option>
+                                    <option value="tsehlanyane">Tsehlanyane Wilderness Hike (M 800 / day / person)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="calcTravelers" class="form-label">Number of People</label>
+                                <input type="number" class="form-control" id="calcTravelers" min="1" max="30" value="1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="calcDays" class="form-label">Number of Days</label>
+                                <input type="number" class="form-control" id="calcDays" min="1" max="14" value="1" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="calcAccommodation" class="form-label">Accommodation</label>
+                                <select class="form-select" id="calcAccommodation">
+                                    <option value="budget">Budget / Camping (+M 0)</option>
+                                    <option value="standard">Guesthouse or Chalet (+M 350 / person / day)</option>
+                                    <option value="luxury">Luxury Lodge (+M 850 / person / day)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="calcGuide" checked>
+                                    <label class="form-check-label" for="calcGuide">Include a local guide (+M 400 per day for the group)</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="calculator-result-box">
+                                    <span class="text-muted small">ESTIMATED TOTAL TOUR PRICE</span>
+                                    <div class="calculator-price" id="calcTotalDisplay">M 1,150</div>
+                                    <span class="small text-muted">Prices are in Lesotho Maloti.</span>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="bookNotes" class="form-label">Special Requests (Optional)</label>
+                                <textarea class="form-control" id="bookNotes" rows="3" placeholder="Write any special requests here..."></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-lesotho-green btn-lg w-100">Submit Tour Booking</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="form-container">
+                    <h2 class="section-title">General Inquiries & Feedback</h2>
+                    <p class="text-muted">Send us a message if you have a question about visiting Lesotho.</p>
+
+                    <div id="contactSuccessAlert" class="alert alert-success d-none"></div>
+                    <div id="contactErrorAlert" class="alert alert-danger d-none"></div>
+
+                    <form id="contactForm" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="contactName" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="contactName" placeholder="Your name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="contactEmail" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="contactEmail" placeholder="you@example.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="contactSubject" class="form-label">Subject *</label>
+                                <select class="form-select" id="contactSubject" required>
+                                    <option value="" disabled selected>Select a subject</option>
+                                    <option value="visa">Visa & Border Crossing</option>
+                                    <option value="weather">Road & Weather Conditions</option>
+                                    <option value="guides">Mountain Guide Request</option>
+                                    <option value="feedback">Website Feedback / Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="contactMessage" class="form-label">Your Message *</label>
+                                <textarea class="form-control" id="contactMessage" rows="4" placeholder="Write your message here..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-lesotho">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <div class="col-lg-4">
+                <aside>
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Maseru Tourism Office</h3>
+                        <p class="small text-muted">Contact us for travel information and road updates.</p>
+                        <p class="small"><strong>Address:</strong><br>Kingsway Road, Maseru Central 100, Lesotho</p>
+                        <p class="small"><strong>Telephone:</strong><br>+266 5005 0055/ +266 6200 7276</p>
+                        <p class="small"><strong>Email:</strong><br>info@tourisminlesotho.co.ls</p>
+                        <p class="small mb-0"><strong>Hours:</strong><br>Monday–Friday: 08:00–17:00<br>Saturday: 09:00–13:00<br>Sunday: Closed</p>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Important Contacts</h3>
+                        <ul class="list-unstyled small mb-0">
+                            <li class="py-2 border-bottom"><strong>Maseru Bridge Border:</strong> Open 24 hours</li>
+                            <li class="py-2 border-bottom"><strong>Sani Pass Border:</strong> 06:00–18:00</li>
+                            <li class="py-2 border-bottom"><strong>Police Emergency:</strong> 123 / +266 2231 7263</li>
+                            <li class="py-2 border-bottom"><strong>Medical Ambulance:</strong> 121</li>
+                            <li class="py-2"><strong>Mountain Search & Rescue:</strong> +266 2231 2238</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget p-2 text-center">
+                        <img src="Msu.jpg" alt="Maseru city centre" class="rounded img-fluid mb-2">
+                        <p class="small text-muted mb-0">Maseru Central Business District</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>About Visit Lesotho</h5>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+
+                    <ul>
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="About(2).html">About Lesotho</a></li>
+                        <li><a href="Destinations(1).html">Destinations</a></li>
+                        <li><a href="Gallery(1).html">Photo Gallery</a></li>
+                        <li><a href="Contact(2).html">Contact & Booking</a></li>
+                    </ul>
+
+                </div>
+                <div class="col-lg-3 col-md-6">
+
+                    <h5>Popular Places</h5>
+                    <ul>
+                        <li><a href="Destinations(1).html">Maletsunyane Falls</a></li>
+                        <li><a href="Destinations(1).html">Katse Dam</a></li>
+                        <li><a href="Destinations(1).html">Sani Pass</a></li>
+                        <li><a href="Destinations(1).html">Thaba Bosiu</a></li>
+                        <li><a href="Destinations(1).html">AfriSki Mountain Resort</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5>Contact Maseru Office</h5>
+                    <p class="small mb-1">Kingsway Road, Maseru 100, Lesotho</p>
+                    <p class="small mb-1">info@sentlemahasane2003@gmail.com</p>
+                    <p class="small mb-1">+266 5005 0055</p>
+                    <p class="small">Monday–Friday: 08:00–17:00</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; Copyright 2026 - Designed by Sentle</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+<script>
+function changeMode() {
+    document.body.classList.toggle("dark");
+    var darkOn = document.body.classList.contains("dark");
+    document.querySelector(".top-bar button").textContent = darkOn ? "Light Mode" : "Dark Mode";
+    try { localStorage.setItem("lesothoTheme", darkOn ? "dark" : "light"); } catch (e) {}
+}
+document.addEventListener("DOMContentLoaded", function () {
+    var savedMode = "";
+    try { savedMode = localStorage.getItem("lesothoTheme") || ""; } catch (e) {}
+    if (savedMode === "dark") {
+        document.body.classList.add("dark");
+        var modeButton = document.querySelector(".top-bar button");
+        if (modeButton) modeButton.textContent = "Light Mode";
+    }
+    var menuButton = document.querySelector(".navbar-toggler");
+    var menu = document.getElementById("lesothoNav");
+    if (menuButton && menu) {
+        menuButton.addEventListener("click", function () {
+            var isOpen = menu.classList.toggle("show");
+            menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        });
+    }
+});
+</script>
+
+<script>
+
+function changeMode() {
+    document.body.classList.toggle("dark");
+    var button = document.getElementById("modeButton");
+    if (document.body.classList.contains("dark")) {
+        button.textContent = "Light Mode";
+        localStorage.setItem("lesothoTheme", "dark");
+    } else {
+        button.textContent = "Dark Mode";
+        localStorage.setItem("lesothoTheme", "light");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var button = document.getElementById("modeButton");
+    if (localStorage.getItem("lesothoTheme") === "dark") {
+        document.body.classList.add("dark");
+        if (button) button.textContent = "Light Mode";
+    }
+
+    var menuButton = document.getElementById("navToggle");
+    var menu = document.getElementById("lesothoNav");
+    if (menuButton && menu) {
+        menuButton.onclick = function () {
+            menu.classList.toggle("open");
+        };
+    }
+
+    var clock = document.getElementById("clock");
+    function showTime() {
+        if (clock) {
+            clock.textContent = "Maseru time: " + new Date().toLocaleTimeString("en-GB", {timeZone: "Africa/Maseru"});
+        }
+    }
+    showTime();
+    setInterval(showTime, 1000);
+
+    var file = location.pathname.split("/").pop().toLowerCase();
+    var page = "home";
+    if (file.indexOf("about") >= 0) page = "about";
+    else if (file.indexOf("destination") >= 0) page = "destinations";
+    else if (file.indexOf("gallery") >= 0) page = "gallery";
+    else if (file.indexOf("contact") >= 0) page = "contact";
+
+    document.querySelectorAll(".site-nav-links a").forEach(function (link) {
+        if (link.getAttribute("data-page") === page) link.classList.add("active");
+    });
+});
+
+</script>
+
+</body>
+</html>
